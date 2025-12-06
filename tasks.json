@@ -1,0 +1,38 @@
+{
+  "lists": {
+    "LIST A (House Chores)": [
+      {
+        "id": "2a",
+        "name": "Fold Laundry",
+        "completed": false
+      },
+      {
+        "id": "3a",
+        "name": "Clean Floors",
+        "completed": false
+      },
+      {
+        "id": "miuv3gy6",
+        "name": "WASH DISHES",
+        "completed": false
+      }
+    ],
+    "LIST B (Yard & Pets)": [
+      {
+        "id": "1b",
+        "name": "Mow Lawn",
+        "completed": false
+      },
+      {
+        "id": "2b",
+        "name": "Water Plants",
+        "completed": false
+      },
+      {
+        "id": "3b",
+        "name": "Clean litter box",
+        "completed": false
+      }
+    ]
+  }
+}

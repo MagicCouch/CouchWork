@@ -1,0 +1,57 @@
+<%- include('partials/header', { pageTitle: pageTitle, activePage: activePage }) %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= pageTitle %> | <%= siteTitle %></title>
+    <link rel="stylesheet" href="/style.css"> 
+</head>
+<body>
+    <div class="container">
+        
+        <% if (flashMessage) { %>
+            <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded-md" role="alert">
+                <p class="font-medium"><%= flashMessage %></p>
+            </div>
+        <% } %>
+
+        <h1><%= pageTitle %></h1>
+        <p class="mb-8">Here is the master list of all current tasks, organized by list.</p>
+
+        <% Object.keys(lists).forEach(function(listName) { %>
+            <h2><%= listName %></h2> 
+            
+            <ul class="mt-4">
+                <% lists[listName].forEach(function(item) { %>
+                    <li class="flex justify-between items-center py-2 border-b border-gray-100">
+                        
+                        <form action="/complete-task" method="POST" class="flex items-center flex-grow">
+                            <input type="hidden" name="taskId" value="<%= item.id %>">
+                            <input type="hidden" name="listKey" value="<%= listName %>">
+                            <input type="hidden" name="completed" value="<%= !item.completed %>">
+                            
+                            <input type="checkbox" onchange="this.form.submit()" 
+                                   <%= item.completed ? 'checked' : '' %> 
+                                   class="cursor-pointer w-5 h-5 text-pink-500 rounded focus:ring-pink-500">
+                            
+                            <span class="ml-3 <%= item.completed ? 'line-through text-gray-400' : '' %>">
+                                <%= item.name %>
+                            </span>
+                        </form>
+                        
+                        <form action="/delete-task" method="POST" onsubmit="return confirm('Delete <%= item.name %>?')">
+                            <input type="hidden" name="taskId" value="<%= item.id %>">
+                            <input type="hidden" name="listKey" value="<%= listName %>">
+                            <button type="submit" class="text-gray-400 hover:text-red-500 transition duration-150 ml-4" title="Delete Task">
+                                ❌
+                            </button>
+                        </form>
+                    </li>
+                <% }); %>
+            </ul>
+        <% }); %>
+        
+        <p class="mt-8"><a href="/">Back to Home</a></p>
+    </div>
+</body>
+</html>
+<%- include('partials/footer') %>

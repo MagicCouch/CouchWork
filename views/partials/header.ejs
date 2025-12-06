@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= (typeof pageTitle !== 'undefined' ? pageTitle : 'Task Tracker') %></title>
+  
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header>
+  <link rel="icon" href="/favicon.ico" />
+  
+  <h1><%= (typeof siteTitle !== 'undefined' ? siteTitle : "Weekly Task Tracker") %></h1>
+  
+  <nav>
+    <a href="/"           class="<%= (typeof activePage !== 'undefined' && activePage === 'home') ? 'active' : '' %>">Home</a> |
+    <a href="/All-Lists"  class="<%= (typeof activePage !== 'undefined' && activePage === 'all-lists') ? 'active' : '' %>">All Lists</a> | 
+    <a href="/faq"        class="<%= (typeof activePage !== 'undefined' && activePage === 'faq') ? 'active' : '' %>">FAQ</a> |
+    <a href="/new-task"   class="<%= (typeof activePage !== 'undefined' && activePage === 'new-task') ? 'active' : '' %>">Add Task</a> 
+  </nav>
+  <hr>
+</header>

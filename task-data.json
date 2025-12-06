@@ -1,0 +1,6 @@
+{
+    "lists": {
+        "LIST A (House Chores)": ["Wash Dishes", "Fold Laundry", "Clean Floors"],
+        "LIST B (Yard & Pets)": ["Mow Lawn", "Water Plants", "Clean litter box"]
+    }
+}

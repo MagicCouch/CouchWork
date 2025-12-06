@@ -1,0 +1,42 @@
+<%- include('partials/header', { pageTitle: pageTitle, activePage: activePage }) %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= pageTitle %> | <%= siteTitle %></title>
+    <link rel="stylesheet" href="/style.css"> 
+</head>
+<body>
+    <div class="container">
+        
+        <h1><%= siteTitle %>: Weekly Snapshot 📅</h1>
+        
+        <div class="my-8 p-6 bg-gray-50 rounded-lg shadow-inner text-center">
+            
+            <h2 class="text-xl font-semibold mb-3">Total Tasks: <%= allTasks.length %></h2>
+            <a href="/new-task" class="py-2 px-4 bg-pink-500 text-white font-bold rounded hover:bg-pink-600 transition duration-150 inline-block">
+                + Add a New Task Now
+            </a>
+        </div>
+
+        
+        <div class="mt-8">
+            <h2>Tasks Due:</h2>
+            <ul class="mt-4">
+                <% if (allTasks && allTasks.length > 0) { %>
+                    <% allTasks.forEach(task => { %>
+                        <li class="bg-gray-50 border-l-4 border-l-yellow-400">
+                            <input type="checkbox"> 
+                            **<%= task.listName.replace(' (House Chores)', '').replace(' (Yard & Pets)', '') %>:** <%= task.name %>
+                        </li>
+                    <% }); %>
+                <% } else { %>
+                    <p class="text-center text-gray-500 p-4">You have no tasks! Use the button above to add your first one.</p>
+                <% } %>
+            </ul>
+        </div>
+        
+        <p class="mt-8 text-sm text-center">Tasks loaded successfully.</p>
+    </div>
+</body>
+</html>
+<%- include('partials/footer') %>
